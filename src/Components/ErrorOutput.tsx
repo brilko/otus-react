@@ -6,7 +6,7 @@ interface Props {
 
 export function ErrorOutput(props: Props) {
     return (
-        <p className="RegularSize">{props.errorMessage}</p>
+        <p className="RegularSize" style={{color: 'red'}}>{props.errorMessage}</p>
     );
 
 }
