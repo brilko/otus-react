@@ -8,11 +8,9 @@ import {ErrorOutput} from "./Components/ErrorOutput"
 
 export default function App() {
 
-  let [url, setUrl] = React.useState<string>();
-  let [receivedLine, setReceivedLine] = React.useState<string>();
-  let [errorMessage, setErrorMessage] = React.useState<string>()
-
-  const initialUrl = "https://catfact.ninja/fact"
+  let [url, setUrl] = React.useState<string>("https://catfact.ninja/fact");
+  let [receivedLine, setReceivedLine] = React.useState<string>("Здесь будет полученное сообщение");
+  let [errorMessage, setErrorMessage] = React.useState<string>("")
 
   function SendAndGetMessage(url: string)  {
     axios   
@@ -30,10 +28,10 @@ export default function App() {
 
   return (
     <div className='App'>
-      <UrlInput url = {url || initialUrl} setUrl={setUrl}/>
-      <SendButton onCklick={() => SendAndGetMessage(url || initialUrl)}></SendButton>
-      <div className="RegularSize">{receivedLine || "Здесь будет полученное сообщение"}</div>
-      <ErrorOutput errorMessage = {errorMessage || ""}/>
+      <UrlInput url = {url} setUrl={setUrl}/>
+      <SendButton onCklick={() => SendAndGetMessage(url)}></SendButton>
+      <div className="RegularSize">{receivedLine}</div>
+      <ErrorOutput errorMessage = {errorMessage}/>
     </div>
   );
 }
