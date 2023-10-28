@@ -1,11 +1,14 @@
+import { Component } from "react";   
+
 interface Props {
     onCklick: ()=>void
 }
 
-export function SendButton(props: Props){
-    return(
-        <>
-            <button onClick={props.onCklick} className="RegularSize">Отправить</button>
-        </>
-    );
+
+export class SendButton extends Component<Props> {
+    render(){
+        return <>
+            <button onClick={this.props.onCklick} className="RegularSize">Отправить</button>
+        </>; 
+    } 
 }
