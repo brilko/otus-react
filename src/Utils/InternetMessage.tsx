@@ -1,16 +1,11 @@
 import axios from 'axios'
 
-
-export function SendAndGetMessage(url: string, setReceivedLine: (_:string) => void, setErrorMessage: (_:string) => void)  {
-    axios   
-      .get(url)
-      .then((resp) => {
-        let ans: string = resp.data.fact;
-        setReceivedLine(ans);
-        setErrorMessage("");
-      })
-      .catch((reason) => {
-        setReceivedLine("Адрес не сработал.");
-        setErrorMessage(reason.message);
-      });
+export async function SendAndGetMessage(url: string) : Promise<{answer: string, error: string}>  {
+  try {
+    const axiousResult = await axios.get(url)
+    const result = axiousResult.data.fact
+    return {answer: result, error: ""}
+  } catch (error: any) {
+    return {answer: "Адрес не сработал.", error: error.message}
   }
+}

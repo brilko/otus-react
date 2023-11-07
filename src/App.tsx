@@ -1,23 +1,24 @@
-import React from 'react';
 import './App.css';
-import {SendButton} from './Components/SendButton'
-import {UrlInput} from './Components/UrlInput'
-import {ErrorOutput} from "./Components/ErrorOutput"
-import {SendAndGetMessage} from "./Utils/InternetMessage"
+import {FunctionalComponent} from "./Components/FunctionalComponent"
+import { ClassComponent } from './Components/ClassComponent';
+
 
 
 export default function App() {
-
-  let [url, setUrl] = React.useState<string>("https://catfact.ninja/fact");
-  let [receivedLine, setReceivedLine] = React.useState<string>("Здесь будет полученное сообщение");
-  let [errorMessage, setErrorMessage] = React.useState<string>("")
-
+  const startUrl:string = "https://catfact.ninja/fact"
+  const startReceivedLine: string = "Здесь будет полученное сообщение"
+  const startErrorMessage: string = ""
   return (
-    <div className='App'>
-      <UrlInput url = {url} setUrl={setUrl}/>
-      <SendButton onCklick={() => SendAndGetMessage(url, setReceivedLine, setErrorMessage)}></SendButton>
-      <div className="RegularSize">{receivedLine}</div>
-      <ErrorOutput errorMessage = {errorMessage}/>
-    </div>
+  <div className='App'>
+    <FunctionalComponent 
+      startUrl={startUrl} 
+      startReceivedLine={startReceivedLine} 
+      startErrorMessage={startErrorMessage} />
+
+     <ClassComponent
+           startUrl={startUrl} 
+           startReceivedLine={startReceivedLine} 
+           startErrorMessage={startErrorMessage} /> 
+  </div>
   );
 }
